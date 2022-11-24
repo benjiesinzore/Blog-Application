@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             composable(NavigationItem.Home.route){
-                                HomeScreen(navController = navController)
+                                HomeScreen(/*navController = navController*/)
                             }
 
                         }

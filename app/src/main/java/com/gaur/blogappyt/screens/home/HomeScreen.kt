@@ -18,13 +18,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
 import com.gaur.domain.model.Blog
 
 
 @Composable
-fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(/*navController: NavController,*/ viewModel: HomeViewModel = hiltViewModel()) {
 
 
     val res = viewModel.blogs.value
@@ -37,12 +36,12 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
 
     if (res.error.isNotBlank()) {
         Box(modifier = Modifier.fillMaxSize()) {
-            Text(text = res.error.toString(), modifier = Modifier.align(Alignment.Center))
+            Text(text = res.error, modifier = Modifier.align(Alignment.Center))
         }
     }
 
     LazyColumn {
-        res.data?.let {
+        res.data?.let { it ->
             items(it) {
                 PostItem(it)
             }
@@ -73,7 +72,7 @@ fun PostItem(it: Blog) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(300.dp),
-            painter = rememberImagePainter(data = it.image), contentDescription = null,
+            painter = rememberAsyncImagePainter(model = it.image), contentDescription = null,
             contentScale = ContentScale.Crop
         )
 
@@ -100,7 +99,7 @@ fun CircularImage(width: Double, height: Double, radius: Double, imageUrl: Strin
     ) {
 
         Image(
-            painter = rememberImagePainter(data = imageUrl), contentDescription = null,
+            painter = rememberAsyncImagePainter(model = imageUrl), contentDescription = null,
             contentScale = ContentScale.Crop
         )
 
