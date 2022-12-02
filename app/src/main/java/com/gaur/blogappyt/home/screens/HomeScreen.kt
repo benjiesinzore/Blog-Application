@@ -1,4 +1,4 @@
-package com.gaur.blogappyt.screens.home
+package com.gaur.blogappyt.home.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -18,12 +18,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.gaur.blogappyt.screens.home.HomeViewModel
 import com.gaur.domain.model.Blog
 
 
 @Composable
-fun HomeScreen(/*navController: NavController,*/ viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen( navController: NavController, viewModel: HomeViewModel = hiltViewModel()) {
 
 
     val res = viewModel.blogs.value
