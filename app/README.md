@@ -1,1 +1,1 @@
-![Screenshot](screenshots/IMG_20221201_183428.jpg)
+![Screenshot](https://github.com/benjiesinzore/Blog-Application/blob/3256da5da7866a4aaedd8ad2a0eda8649caeff3a/app/screenshots)
